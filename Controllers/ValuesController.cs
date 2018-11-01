@@ -3,23 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using geregistreerdeklant_model;
 
 namespace kamerplanten_api.Controllers
 {
-        [Route("api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class geregistreerdeklantController : ControllerBase
+    public class ValuesController : ControllerBase
     {
-
-        private readonly kamerplantContext _context;
-
-        public geregistreerdeklantController(kamerplantContext context)
-        {
-            _context = context;
-        }
-
-
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
@@ -38,14 +28,6 @@ namespace kamerplanten_api.Controllers
         [HttpPost]
         public void Post([FromBody] string value)
         {
-            
-            geregistreerdeklant user = new geregistreerdeklant
-            {
-                
-            };
-
-            _context.Add(user);
-
         }
 
         // PUT api/values/5
