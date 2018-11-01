@@ -8,6 +8,7 @@ using categorie_model;
 using verlanglijstitem_model;
 using bestellingproduct_model;
 using productmandje_model;
+using mandje_model;
 
 public class kamerplantContext : DbContext
 {
@@ -18,11 +19,13 @@ public class kamerplantContext : DbContext
     public DbSet<product> product { get; set; }
     public DbSet<categorie> categorie { get; set; }
     public DbSet<verlanglijstitem> verlanglijstitem { get; set; }
+    public DbSet<mandje> mandje { get; set; }
+    public DbSet<productmandje> productmandje { get; set; }
     
-
-    public kamerplantContext(DbContextOptions<kamerplantContext> options): base(options)
+    public kamerplantContext (DbContextOptions<kamerplantContext> options) : base (options)
     {
     }
+    
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -42,7 +45,7 @@ public class kamerplantContext : DbContext
         modelBuilder.Entity<verlanglijstitem>()
             .HasKey(w => new {w.productID, w.geregistreerdeklantID});
         modelBuilder.Entity<verlanglijstitem>()
-            .HasOne(k => k.geregistreerdeklant())
+            .HasOne(k => k.geregistreerdeklant)
             .WithMany(v => v.verlanglijst)
             .HasForeignKey(k => k.geregistreerdeklantID);
         modelBuilder.Entity<verlanglijstitem>()
