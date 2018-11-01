@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using geregistreerdeklant_model;
 
-namespace kamerplanten_api.Controllers
+namespace geregistreerdeklant_Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
