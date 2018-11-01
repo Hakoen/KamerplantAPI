@@ -3,60 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using geregistreerdeklant_model;
+using klant_model;
 
-namespace geregistreerdeklant_Controllers
+namespace klant_Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class geregistreerdeklantController : ControllerBase
+    public class klantController : ControllerBase
     {
-
         private readonly kamerplantContext _context;
 
-        public geregistreerdeklantController(kamerplantContext context)
+        public klantController(kamerplantContext context)
         {
             _context = context;
         }
 
-
-        // GET api/geregistreerdeklant
+        // GET api/klant
         [HttpGet]
-        public List<geregistreerdeklant> Get()
+        public List<klant> Get()
         {
-            return _context.geregistreerdeklant.ToList();
+            return _context.klant.ToList();
         }
 
-        // GET api/geregistreerdeklant/5
+        // GET api/values/5
         [HttpGet("{id}")]
-        public geregistreerdeklant Get(int id)
+        public klant Get(int id)
         {
-                return _context.geregistreerdeklant.Find(id);
+            return _context.klant.Find(id);
         }
 
-        // POST api/geregistreerdeklant
+        // POST api/values
         [HttpPost]
-        public StatusCodeResult Post([FromBody] geregistreerdeklant newCustomer)
+        public StatusCodeResult Post([FromBody] klant newCustomer)
         {
             try
             {
-                _context.geregistreerdeklant.Add(newCustomer);
-                _context.SaveChanges();
-                return Ok();
-            } 
-            catch 
-            {
-                return BadRequest();
-            }
-        }
-
-        // PUT api/geregistreerdeklant/5
-        [HttpPut]
-        public StatusCodeResult Put([FromBody] geregistreerdeklant changedCustomer)
-        {
-            try
-            {
-                _context.geregistreerdeklant.Update(changedCustomer);
+                _context.klant.Add(newCustomer);
                 _context.SaveChanges();
                 return Ok();
             }
@@ -66,14 +48,30 @@ namespace geregistreerdeklant_Controllers
             }
         }
 
-        // DELETE api/geregistreerdeklant/5
+        // PUT api/values/5
+        [HttpPut]
+        public StatusCodeResult Put([FromBody] klant changedCustomer)
+        {
+            try
+            {
+                _context.klant.Update(changedCustomer);
+                _context.SaveChanges();
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+
+        // DELETE api/values/5
         [HttpDelete("{id}")]
         public StatusCodeResult Delete(int id)
         {
             try
             {
-                geregistreerdeklant verwijder = _context.geregistreerdeklant.Find(id);
-                _context.geregistreerdeklant.Remove(verwijder);
+                klant verwijder = _context.klant.Find(id);
+                _context.klant.Remove(verwijder);
                 _context.SaveChanges();
                 return Ok();
             }
