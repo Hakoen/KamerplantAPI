@@ -20,34 +20,27 @@ namespace kamerplanten_api.Controllers
         }
 
 
-        // GET api/values
+        // GET api/geregistreerdeklant
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public List<geregistreerdeklant> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _context.geregistreerdeklant.ToList();
         }
 
-        // GET api/values/5
+        // GET api/geregistreerdeklant/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public geregistreerdeklant Get(int id)
         {
-            return "value";
+                return _context.geregistreerdeklant.Find(id);
         }
 
-        // POST api/values
+        // POST api/geregistreerdeklant
         [HttpPost]
         public StatusCodeResult Post([FromBody] geregistreerdeklant newCustomer)
         {
             try
             {
-                geregistreerdeklant user = new geregistreerdeklant
-                {
-                    naam = newCustomer.naam,
-                    adres = newCustomer.adres,
-                    email = newCustomer.email,
-                    wachtwoord = newCustomer.wachtwoord
-                };
-                _context.geregistreerdeklant.Add(user);
+                _context.geregistreerdeklant.Add(newCustomer);
                 _context.SaveChanges();
                 return Ok();
             } 
@@ -57,16 +50,37 @@ namespace kamerplanten_api.Controllers
             }
         }
 
-        // PUT api/values/5
+        // PUT api/geregistreerdeklant/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public StatusCodeResult Put(int id, [FromBody] geregistreerdeklant changedCustomer)
         {
+            try
+            {
+                _context.geregistreerdeklant.Update(changedCustomer);
+                _context.SaveChanges();
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
 
-        // DELETE api/values/5
+        // DELETE api/geregistreerdeklant/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public StatusCodeResult Delete(int id)
         {
+            try
+            {
+                geregistreerdeklant verwijder = _context.geregistreerdeklant.Find(id);
+                _context.geregistreerdeklant.Remove(verwijder);
+                _context.SaveChanges();
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
     }
 }
