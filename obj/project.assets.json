@@ -11592,11 +11592,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jordy\\Documents\\GitHub\\kamerplanten-api\\kamerplanten-api.csproj",
+      "projectUniqueName": "c:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\kamerplanten-api.csproj",
       "projectName": "kamerplanten-api",
-      "projectPath": "C:\\Users\\Jordy\\Documents\\GitHub\\kamerplanten-api\\kamerplanten-api.csproj",
+      "projectPath": "c:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\kamerplanten-api.csproj",
       "packagesPath": "C:\\Users\\Jordy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jordy\\Documents\\GitHub\\kamerplanten-api\\obj\\",
+      "outputPath": "c:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

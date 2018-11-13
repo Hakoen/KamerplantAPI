@@ -14,6 +14,7 @@ public class kamerplantContext : DbContext
     public kamerplantContext(DbContextOptions<kamerplantContext> options): base(options)
     {
     }
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         //M-M producten & bestellingen
