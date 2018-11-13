@@ -50,7 +50,7 @@ namespace admin_Controllers
             }
         }
 
-        // PUT api/admin/5
+        // PUT api/admin    ID meesturen in JSON
         [HttpPut]
         public StatusCodeResult Put([FromBody] admin changedAdmin)
         {
