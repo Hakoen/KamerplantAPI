@@ -1,5 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using klant_model;
+using bestelling_model;
+using geregistreerdeklant_model;
+using product_model;
+using categorie_model;
+using verlanglijstitem_model;
+using bestellingproduct_model;
+using productmandje_model;
+using mandje_model;
 
 public class kamerplantContext : DbContext
 {
@@ -10,11 +19,17 @@ public class kamerplantContext : DbContext
     public DbSet<product> product { get; set; }
     public DbSet<categorie> categorie { get; set; }
     public DbSet<verlanglijstitem> verlanglijstitem { get; set; }
+    public DbSet<mandje> mandje { get; set; }
+    public DbSet<productmandje> productmandje { get; set; }
     
-    public kamerplantContext(DbContextOptions<kamerplantContext> options): base(options)
+    public kamerplantContext (DbContextOptions<kamerplantContext> options) : base (options)
     {
     }
     
+<<<<<<< HEAD
+=======
+
+>>>>>>> ff4442ca39e81da6215b88d38f7514909eaf7f3c
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         //M-M producten & bestellingen

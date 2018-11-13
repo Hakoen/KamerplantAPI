@@ -1,9 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using productmandje_model;
 
-public class mandje
+namespace mandje_model
 {
-    public int ID { get; set; }
-    public int klantID { get; set; }
-    public List<productmandje> producten { get; set; }
+    public class mandje
+    {
+        public int ID { get; set; }
+        public int klantID { get; set; }
+        public List<productmandje> producten { get; set; }
+    }
 }

@@ -12,3 +12,17 @@ C:\Users\Jordy\Documents\GitHub\kamerplanten-api\bin\Debug\netcoreapp2.1\kamerpl
 C:\Users\Jordy\Documents\GitHub\kamerplanten-api\obj\Debug\netcoreapp2.1\kamerplanten-api.RazorTargetAssemblyInfo.cache
 C:\Users\Jordy\Documents\GitHub\kamerplanten-api\obj\Debug\netcoreapp2.1\kamerplanten-api.dll
 C:\Users\Jordy\Documents\GitHub\kamerplanten-api\obj\Debug\netcoreapp2.1\kamerplanten-api.pdb
+C:\Users\Jordy\Documents\GitHub\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.csprojAssemblyReference.cache
+C:\Users\Jordy\Documents\GitHub\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.csproj.CoreCompileInputs.cache
+C:\Users\Jordy\Documents\GitHub\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.RazorAssemblyInfo.cache
+C:\Users\Jordy\Documents\GitHub\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.RazorAssemblyInfo.cs
+C:\Users\Jordy\Documents\GitHub\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.AssemblyInfoInputs.cache
+C:\Users\Jordy\Documents\GitHub\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.AssemblyInfo.cs
+C:\Users\Jordy\Documents\GitHub\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.dll
+C:\Users\Jordy\Documents\GitHub\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.pdb
+C:\Users\Jordy\Documents\GitHub\KamerplantAPI\bin\Debug\netcoreapp2.1\kamerplanten-api.deps.json
+C:\Users\Jordy\Documents\GitHub\KamerplantAPI\bin\Debug\netcoreapp2.1\kamerplanten-api.runtimeconfig.json
+C:\Users\Jordy\Documents\GitHub\KamerplantAPI\bin\Debug\netcoreapp2.1\kamerplanten-api.runtimeconfig.dev.json
+C:\Users\Jordy\Documents\GitHub\KamerplantAPI\bin\Debug\netcoreapp2.1\kamerplanten-api.dll
+C:\Users\Jordy\Documents\GitHub\KamerplantAPI\bin\Debug\netcoreapp2.1\kamerplanten-api.pdb
+C:\Users\Jordy\Documents\GitHub\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.RazorTargetAssemblyInfo.cache
