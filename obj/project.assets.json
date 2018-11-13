@@ -11587,26 +11587,23 @@
   },
   "packageFolders": {
     "C:\\Users\\Jordy\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\kamerplanten-api.csproj",
+      "projectUniqueName": "C:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\kamerplanten-api.csproj",
       "projectName": "kamerplanten-api",
-      "projectPath": "c:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\kamerplanten-api.csproj",
+      "projectPath": "C:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\kamerplanten-api.csproj",
       "packagesPath": "C:\\Users\\Jordy\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\obj\\",
+      "outputPath": "C:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\Jordy\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
@@ -11660,5 +11657,13 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\obj\\kamerplanten-api.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

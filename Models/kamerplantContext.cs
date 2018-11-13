@@ -21,15 +21,12 @@ public class kamerplantContext : DbContext
     public DbSet<verlanglijstitem> verlanglijstitem { get; set; }
     public DbSet<mandje> mandje { get; set; }
     public DbSet<productmandje> productmandje { get; set; }
+    public DbSet<admin> admin { get; set; }
     
     public kamerplantContext (DbContextOptions<kamerplantContext> options) : base (options)
     {
     }
     
-<<<<<<< HEAD
-=======
-
->>>>>>> ff4442ca39e81da6215b88d38f7514909eaf7f3c
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         //M-M producten & bestellingen

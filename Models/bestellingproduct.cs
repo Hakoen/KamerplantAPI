@@ -11,5 +11,6 @@ namespace bestellingproduct_model
         public product product { get; set; }
         public int bestellingID { get; set; }
         public bestelling bestelling { get; set; }
+        public double verkoopPrijs { get; set; }
     }
 }
