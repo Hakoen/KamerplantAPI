@@ -71,6 +71,9 @@ namespace bestelling_Controllers
 
                 if (productInVoorraad)
                 {
+                    //Product voorraad met 1 verminderen
+                    Product.voorraad -= 1;
+
                     //bestellingproduct relatie opbouw:
                     bestellingproduct productCombinatie = new bestellingproduct();
                     productCombinatie.productID = order.producten[i];
@@ -103,7 +106,7 @@ namespace bestelling_Controllers
             }
             else
             {
-                return StatusCode(410);
+                return StatusCode(410); //Een van de producten niet in voorrraad
             }
 
         }
