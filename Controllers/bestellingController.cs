@@ -40,83 +40,72 @@ namespace bestelling_Controllers
         }
 
         //Definitie van te ontvangen order object
-        public class Order{
+        public class Order
+        {
             public int klantID { get; set; }
             public int[] producten { get; set; } //Product ID's
+            public bool geregistreerd { get; set; }
         }
 
         // POST api/bestelling
         [HttpPost]
         public StatusCodeResult Post([FromBody] Order order)
         {
+            //Boolean to determine if order can be placed
+            bool allProductsInStock = true;
+
             //Bestelling
             bestelling newBestelling = new bestelling();
-            Console.WriteLine(order.klantID + " hij ontvangt hm");
-                
-                newBestelling.datum = DateTime.Now.ToString();
-                newBestelling.prijs = 0.00;
-            
+            newBestelling.datum = DateTime.Now.ToString();
+            newBestelling.prijs = 0.00;
+            newBestelling.klantID = order.klantID;
+            newBestelling.geregistreerd = order.geregistreerd;
 
             //Bestelling opbouwen uit aangeleverde json
             //Bestellingproduct krijgen wij binnen als array product ID's
             for(int i = 0;i < order.producten.Length; i++)
             {
-                bestellingproduct productCombinatie = new bestellingproduct();
-                productCombinatie.productID = order.producten[i];
-                productCombinatie.bestellingID = newBestelling.ID;
-                productCombinatie.product = _context.product.Find(order.producten[i]);
-                productCombinatie.bestelling = newBestelling;
-                productCombinatie.verkoopPrijs = _context.product.Find(order.producten[i]).prijs;
+                //Check of product in voorraad is.
+                product Product = _context.product.Find(order.producten[i]);
+                bool productInVoorraad = (Product.voorraad > 0) ? true : false;
 
-                _context.bestellingproduct.Add(productCombinatie);
-                newBestelling.producten.Append(productCombinatie);
-                newBestelling.prijs = (newBestelling.prijs + productCombinatie.verkoopPrijs);
+                if (productInVoorraad)
+                {
+                    //bestellingproduct relatie opbouw:
+                    bestellingproduct productCombinatie = new bestellingproduct();
+                    productCombinatie.productID = order.producten[i];
+                    productCombinatie.bestellingID = newBestelling.ID;
+                    productCombinatie.product = Product;
+                    productCombinatie.bestelling = newBestelling;
+                    productCombinatie.verkoopPrijs = _context.product.Find(order.producten[i]).prijs;
+                    _context.bestellingproduct.Add(productCombinatie);
+                    newBestelling.producten.Append(productCombinatie);
+                    newBestelling.prijs = (newBestelling.prijs + productCombinatie.verkoopPrijs);
+                } 
+                else 
+                {
+                    allProductsInStock = false;
+                }
             }
-            newBestelling.klantID = order.klantID;
-            try
-            {
-                _context.bestelling.Add(newBestelling);
-                _context.SaveChanges();
-                return Ok();
-            } 
-            catch 
-            {
-                return BadRequest();
-            }
-            
-        }
 
-        // PUT api/bestelling    ID meesturen in JSON
-        [HttpPut]
-        public StatusCodeResult Put([FromBody] bestelling changedBestelling)
-        {
-            try
+            if(allProductsInStock)
             {
-                _context.bestelling.Update(changedBestelling);
-                _context.SaveChanges();
-                return Ok();
+                try
+                {
+                    _context.bestelling.Add(newBestelling);
+                    _context.SaveChanges();
+                    return Ok();
+                } 
+                catch 
+                {
+                    return BadRequest();
+                }
             }
-            catch
+            else
             {
-                return BadRequest();
+                return StatusCode(410);
             }
-        }
 
-        // DELETE api/bestelling/5
-        [HttpDelete("{id}")]
-        public StatusCodeResult Delete(int id)
-        {
-            try
-            {
-                bestelling verwijder = _context.bestelling.Find(id);
-                _context.bestelling.Remove(verwijder);
-                _context.SaveChanges();
-                return Ok();
-            }
-            catch
-            {
-                return BadRequest();
-            }
         }
     }
 }

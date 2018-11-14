@@ -8,6 +8,7 @@ namespace bestelling_model
     {
         public int ID { get; set; }
         public int klantID { get; set; }
+        public bool geregistreerd { get; set; }
         public double prijs { get; set; }
         public string datum { get; set; }
         public List<bestellingproduct> producten { get; set; }
