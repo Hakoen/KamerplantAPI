@@ -20,10 +20,16 @@ namespace sessie_Controllers
         }
 
         // GET api/sessie
+        // [HttpGet]
+        // public List<sessie> Get()
+        // {
+        //     return _context.sessie.ToList();
+        // }
+
         [HttpGet]
-        public List<sessie> Get()
+        public void Get()
         {
-            return _context.sessie.ToList();
+            closeSessions();
         }
 
         // GET api/sessie/5
@@ -92,6 +98,21 @@ namespace sessie_Controllers
             {
                 return BadRequest();
             }
+        }
+
+        public void closeSessions()
+        {
+            int[] openSessies = (from sessie in _context.sessie
+                                    where sessie.actief == true
+                                    select sessie.ID).ToArray();
+
+            for(int i = 0; i < openSessies.Length; i++)
+            {
+                DateTime open = DateTime.Parse(_context.sessie.Find(openSessies[i]).intijd);
+                string tijd = (open.Minute - DateTime.Now.Minute).ToString();
+                Console.WriteLine("Sessie " + tijd + " minuten."); 
+            } //Dit nog ff fixen
+            
         }
      }
 }
