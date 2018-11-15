@@ -26,11 +26,12 @@ namespace sessie_Controllers
             return _context.sessie.ToList();
         }
 
-        // GET api/values/5
+        // GET api/sessie/5
         [HttpGet("{id}")]
-        public sessie Get(int id)
+        public bool Get(int id)
         {
-            return _context.sessie.Find(id);
+            sessie Sessie = _context.sessie.Find(id);
+            return Sessie.actief;
         }
 
         // POST api/values
@@ -47,7 +48,7 @@ namespace sessie_Controllers
         public int Post([FromBody] inlogObject login)
         {
             //Gebruiker identificeren
-            geregistreerdeklant gebruiker = _context.geregistreerdeklant.SingleOrDefault(geregistreerdeklant => geregistreerdeklant.email == login.email);
+            geregistreerdeklant gebruiker = _context.geregistreerdeklant.SingleOrDefault(geregistreerdeklant => geregistreerdeklant.email == login.email.ToLower());
             bool authorized = (login.wachtwoord == gebruiker.wachtwoord) ? true : false;
 
             if(authorized)
@@ -65,47 +66,32 @@ namespace sessie_Controllers
                 }
                 catch
                 {
-                    return 999999999;
+                    return 0;
                 }
 
             }
             else
             {
-                return 10101010;
+                return 0;
             }     
         }
 
-        // PUT api/values/5
-//         [HttpPut]
-//         public StatusCodeResult Put([FromBody] geregistreerdeklant changedCustomer)
-//         {
-//             try
-//             {
-//                 _context.klant.Update(changedCustomer);
-//                 _context.SaveChanges();
-//                 return Ok();
-//             }
-//             catch
-//             {
-//                 return BadRequest();
-//             }
-//         }
-
-//         // DELETE api/values/5
-//         [HttpDelete("{id}")]
-//         public StatusCodeResult Delete(int id)
-//         {
-//             try
-//             {
-//                 geregistreerdeklant verwijder = _context.klant.Find(id);
-//                 _context.klant.Remove(verwijder);
-//                 _context.SaveChanges();
-//                 return Ok();
-//             }
-//             catch
-//             {
-//                 return BadRequest();
-//             }
-//         }
+        //PUT
+        [HttpPut("{sessieID}")]
+        public StatusCodeResult Put(int sessieID)
+        {
+            try
+            {
+                sessie huidigeSessie = _context.sessie.Find(sessieID);
+                huidigeSessie.actief = false;
+                huidigeSessie.uittijd = DateTime.Now.ToString();
+                _context.SaveChanges();
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
      }
 }

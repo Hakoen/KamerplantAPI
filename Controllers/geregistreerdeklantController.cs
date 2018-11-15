@@ -40,6 +40,7 @@ namespace geregistreerdeklant_Controllers
         {
             try
             {
+                newCustomer.email = newCustomer.email.ToLower();
                 _context.geregistreerdeklant.Add(newCustomer);
                 _context.SaveChanges();
                 return Ok();
