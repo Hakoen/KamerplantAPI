@@ -10,6 +10,7 @@ using bestellingproduct_model;
 using productmandje_model;
 using mandje_model;
 using admin_model;
+using sessie_model;
 
 public class kamerplantContext : DbContext
 {
@@ -23,6 +24,7 @@ public class kamerplantContext : DbContext
     public DbSet<mandje> mandje { get; set; }
     public DbSet<productmandje> productmandje { get; set; }
     public DbSet<admin> admin { get; set; }
+    public DbSet<sessie> sessie { get; set; }
     
     public kamerplantContext (DbContextOptions<kamerplantContext> options) : base (options)
     {
