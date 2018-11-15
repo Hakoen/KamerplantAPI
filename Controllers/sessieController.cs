@@ -44,11 +44,35 @@ namespace sessie_Controllers
         }
 
         [HttpPost]
-        public geregistreerdeklant Post([FromBody] inlogObject login)
+        public int Post([FromBody] inlogObject login)
         {
             //Gebruiker identificeren
             geregistreerdeklant gebruiker = _context.geregistreerdeklant.SingleOrDefault(geregistreerdeklant => geregistreerdeklant.email == login.email);
-            return gebruiker;
+            bool authorized = (login.wachtwoord == gebruiker.wachtwoord) ? true : false;
+
+            if(authorized)
+            {
+                try
+                {
+                    sessie newSessie = new sessie();
+                    newSessie.geregistreerdeklantID = gebruiker.ID;
+                    newSessie.intijd = DateTime.Now.ToString();
+                    newSessie.actief = true;
+
+                    _context.sessie.Add(newSessie);
+                    _context.SaveChanges();
+                    return newSessie.ID;
+                }
+                catch
+                {
+                    return 999999999;
+                }
+
+            }
+            else
+            {
+                return 10101010;
+            }     
         }
 
         // PUT api/values/5
