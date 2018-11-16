@@ -11592,11 +11592,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\kamerplanten-api.csproj",
+      "projectUniqueName": "c:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\kamerplanten-api.csproj",
       "projectName": "kamerplanten-api",
-      "projectPath": "C:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\kamerplanten-api.csproj",
+      "projectPath": "c:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\kamerplanten-api.csproj",
       "packagesPath": "C:\\Users\\Jordy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\obj\\",
+      "outputPath": "c:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -11657,13 +11657,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\obj\\kamerplanten-api.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
