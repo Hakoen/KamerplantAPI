@@ -11586,30 +11586,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jordy\\.nuget\\packages\\": {},
+    "C:\\Users\\Erik_\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\kamerplanten-api.csproj",
+      "projectUniqueName": "c:\\Users\\Erik_\\Documents\\github\\KamerplantAPI\\kamerplanten-api.csproj",
       "projectName": "kamerplanten-api",
-      "projectPath": "C:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\kamerplanten-api.csproj",
-      "packagesPath": "C:\\Users\\Jordy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\obj\\",
+      "projectPath": "c:\\Users\\Erik_\\Documents\\github\\KamerplantAPI\\kamerplanten-api.csproj",
+      "packagesPath": "C:\\Users\\Erik_\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\Erik_\\Documents\\github\\KamerplantAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Jordy\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Erik_\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -11657,13 +11655,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\obj\\kamerplanten-api.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
