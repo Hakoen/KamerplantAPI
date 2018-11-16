@@ -45,6 +45,7 @@ namespace bestelling_Controllers
             public int klantID { get; set; }
             public int[] producten { get; set; } //Product ID's
             public bool geregistreerd { get; set; }
+            public string adres { get; set; }
         }
 
         // POST api/bestelling
@@ -59,6 +60,7 @@ namespace bestelling_Controllers
             newBestelling.datum = DateTime.Now.ToString();
             newBestelling.prijs = 0.00;
             newBestelling.klantID = order.klantID;
+            newBestelling.adres = order.adres;
             newBestelling.geregistreerd = order.geregistreerd;
 
             //Bestelling opbouwen uit aangeleverde json

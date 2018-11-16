@@ -11,6 +11,7 @@ namespace bestelling_model
         public bool geregistreerd { get; set; }
         public double prijs { get; set; }
         public string datum { get; set; }
+        public string adres { get; set; }
         public List<bestellingproduct> producten { get; set; }
         
     }
