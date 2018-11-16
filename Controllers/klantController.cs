@@ -25,7 +25,7 @@ namespace klant_Controllers
             return _context.klant.ToList();
         }
 
-        // GET api/values/5
+        // GET api/klant/5
         [HttpGet("{id}")]
         public klant Get(int id)
         {

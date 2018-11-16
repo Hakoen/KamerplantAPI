@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using sessie_model;
 using geregistreerdeklant_model;
+using System.Timers;
 
 namespace sessie_Controllers
 {
@@ -13,6 +14,7 @@ namespace sessie_Controllers
     public class sessieController : ControllerBase
     {
         private readonly kamerplantContext _context;
+        
 
         public sessieController(kamerplantContext context)
         {
@@ -30,6 +32,7 @@ namespace sessie_Controllers
         [HttpGet("{id}")]
         public bool Get(int id)
         {
+            closeSessions();
             sessie Sessie = _context.sessie.Find(id);
             return Sessie.actief;
         }
@@ -47,6 +50,7 @@ namespace sessie_Controllers
         [HttpPost]
         public int Post([FromBody] inlogObject login)
         {
+            closeSessions();
             //Gebruiker identificeren
             geregistreerdeklant gebruiker = _context.geregistreerdeklant.SingleOrDefault(geregistreerdeklant => geregistreerdeklant.email == login.email.ToLower());
             bool authorized = (login.wachtwoord == gebruiker.wachtwoord) ? true : false;
@@ -80,6 +84,7 @@ namespace sessie_Controllers
         [HttpPut("{sessieID}")]
         public StatusCodeResult Put(int sessieID)
         {
+            closeSessions();
             try
             {
                 sessie huidigeSessie = _context.sessie.Find(sessieID);
@@ -93,5 +98,27 @@ namespace sessie_Controllers
                 return BadRequest();
             }
         }
+        public void closeSessions()
+        {
+            int[] openSessies = (from sessie in _context.sessie
+                                    where sessie.actief == true
+                                    select sessie.ID).ToArray();
+
+            for(int i = 0; i < openSessies.Length; i++)
+            {
+                DateTime open = DateTime.Parse(_context.sessie.Find(openSessies[i]).intijd);
+                double tijd = (DateTime.Now - open).TotalSeconds;
+                Console.WriteLine("Checkt sessie: " + openSessies[i]);
+                if(tijd > 1800)
+                {
+                    sessie huidigeSessie = _context.sessie.Find(openSessies[i]);
+                    huidigeSessie.actief = false;
+                    huidigeSessie.uittijd = DateTime.Now.ToString();
+                    _context.SaveChanges();
+                    Console.WriteLine("Inactieve sessie gesloten: " + openSessies[i]);
+                }
+            }   
+        }
+        
      }
 }
