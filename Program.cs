@@ -16,7 +16,6 @@ namespace kamerplanten_api
     {
         public static void Main(string[] args)
         {
-            
             CreateWebHostBuilder(args).Build().Run();
         }
 
