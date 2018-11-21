@@ -16,6 +16,7 @@ namespace kamerplanten_api
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -30,8 +31,9 @@ namespace kamerplanten_api
                 opt => opt.UseNpgsql(@"User ID=kamerplant;Password=kamerplant123;Host=83.96.162.248;Port=5432;Database=kamerplant;Pooling=true;")
             );
 
-            services.AddMvc();
             services.AddCors();
+            services.AddMvc();
+            
             // .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -48,10 +50,11 @@ namespace kamerplanten_api
             }
 
             app.UseCors(builder =>
-                builder.WithOrigins("http://kamerplant.me"));
+                builder.AllowAnyOrigin());
 
             app.UseHttpsRedirection();
             app.UseMvc();
         }
+        
     }
 }

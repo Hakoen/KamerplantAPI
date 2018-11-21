@@ -16,14 +16,20 @@ namespace kamerplanten_api
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
-            //Dit hieronder outcommenten voor local!
+            //CreateWebHostBuilder(args).Build().Run();
+            var config = new ConfigurationBuilder().AddCommandLine(args).Build();
+
             var host = new WebHostBuilder()
-            .UseKestrel()
-            .UseUrls("http://kamerplant.me:5000")
-            .UseContentRoot(Directory.GetCurrentDirectory())
-            .UseStartup<Startup>()
-            .Build();
+                .UseKestrel()
+                .UseConfiguration(config)
+                .UseUrls("http://kamerplant.me:5000")
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
+                .UseStartup<Startup>()
+                .Build();
+
+            host.Run();
+
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
