@@ -31,6 +31,7 @@ namespace kamerplanten_api
             );
 
             services.AddMvc();
+            services.AddCors();
             // .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -45,6 +46,9 @@ namespace kamerplanten_api
             {
                 app.UseHsts();
             }
+
+            app.UseCors(builder =>
+                builder.WithOrigins("http://kamerplant.me"));
 
             app.UseHttpsRedirection();
             app.UseMvc();
