@@ -57,6 +57,8 @@ namespace geregistreerdeklant_Controllers
         {
             try
             {
+                string mail = changedCustomer.email.ToLower();
+                changedCustomer.email = mail;
                 _context.geregistreerdeklant.Update(changedCustomer);
                 _context.SaveChanges();
                 return Ok();
