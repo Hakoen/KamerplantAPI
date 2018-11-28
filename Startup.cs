@@ -31,8 +31,14 @@ namespace kamerplanten_api
                 opt => opt.UseNpgsql(@"User ID=postgres;Password=kamerplant123;Host=83.96.162.28;Port=5432;Database=kamerplant;Pooling=true;")
             );
 
-            services.AddCors();
+            //services.AddCors();
             services.AddMvc();
+
+            services.AddCors(options => options.AddPolicy("AllowWebApp",
+            builder => builder.AllowAnyMethod()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod()
+                          .AllowAnyOrigin()));
             
             // .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -49,8 +55,9 @@ namespace kamerplanten_api
                 app.UseHsts();
             }
 
-            app.UseCors(builder =>
-                builder.AllowAnyOrigin());
+            //app.UseCors(builder =>
+            //    builder.AllowAnyOrigin());
+             app.UseCors("AllowWebApp");
 
             app.UseHttpsRedirection();
             app.UseMvc();
