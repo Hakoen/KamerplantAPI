@@ -47,14 +47,14 @@ public class kamerplantContext : DbContext
         //M-M producten & verlanglijstjes
         modelBuilder.Entity<verlanglijstitem>()
             .HasKey(w => new {w.productID, w.geregistreerdeklantID});
-        modelBuilder.Entity<verlanglijstitem>()
-            .HasOne(k => k.geregistreerdeklant)
-            .WithMany(v => v.verlanglijst)
-            .HasForeignKey(k => k.geregistreerdeklantID);
-        modelBuilder.Entity<verlanglijstitem>()
-            .HasOne(v => v.product)
-            .WithMany(k => k.verlanglijst)
-            .HasForeignKey(v => v.productID);
+        // modelBuilder.Entity<verlanglijstitem>()
+        //     .HasOne(k => k.geregistreerdeklant)
+        //     .WithMany(v => v.verlanglijst)
+        //     .HasForeignKey(k => k.geregistreerdeklantID);
+        // modelBuilder.Entity<verlanglijstitem>()
+        //     .HasOne(v => v.product)
+        //     .WithMany(k => k.verlanglijst)
+        //     .HasForeignKey(v => v.productID);
 
         //M-M producten & winkelmandjes
         modelBuilder.Entity<productmandje>()
