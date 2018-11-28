@@ -27,7 +27,6 @@ namespace kamerplanten_api
                 .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
-
             host.Run();
 
         }

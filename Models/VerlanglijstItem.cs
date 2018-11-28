@@ -9,7 +9,5 @@ namespace verlanglijstitem_model
     {
         public int productID { get; set; }
         public int geregistreerdeklantID { get; set; }
-        public geregistreerdeklant geregistreerdeklant { get; set; }
-        public product product { get; set; }
     }
 }
