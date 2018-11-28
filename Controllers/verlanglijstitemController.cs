@@ -26,6 +26,7 @@ namespace verlanglijstitem_Controller
         }
 
         // GET api/verlanglijstitem/5
+        //ID is hier klant ID, waaraan de lijst items gelinkt zijn
         [HttpGet("{id}")]
         public verlanglijstitem Get(int id)
         {

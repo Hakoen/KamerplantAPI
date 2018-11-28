@@ -7,6 +7,7 @@ namespace verlanglijstitem_model
 {
     public class verlanglijstitem
     {
+        public int ID { get; set; }
         public int productID { get; set; }
         public int geregistreerdeklantID { get; set; }
     }

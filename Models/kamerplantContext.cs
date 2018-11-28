@@ -45,8 +45,8 @@ public class kamerplantContext : DbContext
             .HasForeignKey(p => p.productID);
 
         //M-M producten & verlanglijstjes
-        modelBuilder.Entity<verlanglijstitem>()
-            .HasKey(w => new {w.productID, w.geregistreerdeklantID});
+        // modelBuilder.Entity<verlanglijstitem>()
+        //     .HasKey(w => new {w.productID, w.geregistreerdeklantID});
         // modelBuilder.Entity<verlanglijstitem>()
         //     .HasOne(k => k.geregistreerdeklant)
         //     .WithMany(v => v.verlanglijst)

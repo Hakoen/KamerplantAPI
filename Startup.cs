@@ -28,7 +28,7 @@ namespace kamerplanten_api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<kamerplantContext> (
-                opt => opt.UseNpgsql(@"User ID=kamerplant;Password=kamerplant123;Host=83.96.162.248;Port=5432;Database=kamerplant;Pooling=true;")
+                opt => opt.UseNpgsql(@"User ID=postgres;Password=kamerplant123;Host=83.96.162.28;Port=5432;Database=kamerplant;Pooling=true;")
             );
 
             services.AddCors();
