@@ -27,12 +27,16 @@ namespace geregistreerdeklant_Controllers
             return _context.geregistreerdeklant.ToList();
         }
 
-        // GET api/geregistreerdeklant/5
-        [HttpGet("{id}")]
-        public geregistreerdeklant Get(int id)
+        //GET api/geregistreerdeklant/henk@gmail.com
+        [HttpGet("{mail}")]
+        public geregistreerdeklant Get(string mail)
         {
-                return _context.geregistreerdeklant.Find(id);
+            Console.WriteLine("Zoeken naar email: " + mail);
+            geregistreerdeklant _gebruiker = _context.geregistreerdeklant.SingleOrDefault(geregistreerdeklant => geregistreerdeklant.email == mail.ToLower());
+            Console.WriteLine(_gebruiker.naam);
+            return _gebruiker;
         }
+
 
         // POST api/geregistreerdeklant
         [HttpPost]

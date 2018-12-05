@@ -25,6 +25,7 @@ namespace sessie_Controllers
         [HttpGet]
         public List<sessie> Get()
         {
+            closeSessions(null);
             return _context.sessie.ToList();
         }
 
@@ -32,7 +33,7 @@ namespace sessie_Controllers
         [HttpGet("{id}")]
         public bool Get(int id)
         {
-            closeSessions();
+            closeSessions(null);
             sessie Sessie = _context.sessie.Find(id);
             return Sessie.actief;
         }
@@ -50,12 +51,11 @@ namespace sessie_Controllers
         [HttpPost]
         public int Post([FromBody] inlogObject login)
         {
-            closeSessions();
+            closeSessions(login);
             //Gebruiker identificeren
             geregistreerdeklant gebruiker = _context.geregistreerdeklant.SingleOrDefault(geregistreerdeklant => geregistreerdeklant.email == login.email.ToLower());
-            bool authorized = (login.wachtwoord == gebruiker.wachtwoord) ? true : false;
 
-            if(authorized)
+            if(_context.geregistreerdeklant.Contains(gebruiker))
             {
                 try
                 {
@@ -84,7 +84,7 @@ namespace sessie_Controllers
         [HttpPut("{sessieID}")]
         public StatusCodeResult Put(int sessieID)
         {
-            closeSessions();
+            closeSessions(null);
             try
             {
                 sessie huidigeSessie = _context.sessie.Find(sessieID);
@@ -98,7 +98,7 @@ namespace sessie_Controllers
                 return BadRequest();
             }
         }
-        public void closeSessions()
+        public void closeSessions(inlogObject logObject)
         {
             int[] openSessies = (from sessie in _context.sessie
                                     where sessie.actief == true
@@ -106,18 +106,36 @@ namespace sessie_Controllers
 
             for(int i = 0; i < openSessies.Length; i++)
             {
-                DateTime open = DateTime.Parse(_context.sessie.Find(openSessies[i]).intijd);
-                double tijd = (DateTime.Now - open).TotalSeconds;
-                Console.WriteLine("Checkt sessie: " + openSessies[i]);
-                if(tijd > 1800)
+                
+                if(logObject != null)
                 {
-                    sessie huidigeSessie = _context.sessie.Find(openSessies[i]);
-                    huidigeSessie.actief = false;
-                    huidigeSessie.uittijd = DateTime.Now.ToString();
-                    _context.SaveChanges();
-                    Console.WriteLine("Inactieve sessie gesloten: " + openSessies[i]);
+                    //Checken of de inloggende gebruiker al en sessie open heeft
+                    sessie _sessie = _context.sessie.Find(openSessies[i]);
+                    geregistreerdeklant _gebruiker = _context.geregistreerdeklant.SingleOrDefault(geregistreerdeklant => geregistreerdeklant.email == logObject.email.ToLower());
+                    if (_sessie.geregistreerdeklantID == _gebruiker.ID)
+                    {
+                        //Zeau ja: Sessie schlossen
+                        closeSession(_sessie.ID);
+                    }
+                }
+                else
+                {
+                    DateTime open = DateTime.Parse(_context.sessie.Find(openSessies[i]).intijd);
+                    double tijd = (DateTime.Now - open).TotalSeconds;
+                    if(tijd > 1800)
+                    {
+                        closeSession(openSessies[i]);
+                    }
                 }
             }   
+        }
+        public void closeSession(int sessieID)
+        {
+            sessie Sessie = _context.sessie.Find(sessieID);
+            Sessie.actief = false;
+            Sessie.uittijd = DateTime.Now.ToString();
+            _context.SaveChanges();
+            Console.WriteLine("Sessie: " + Sessie.ID + " is gesloten.");
         }
         
      }
