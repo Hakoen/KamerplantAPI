@@ -23,14 +23,13 @@ namespace product_Controller
         [HttpGet]    //default values needed to prevent crash
         public List<product> Get(int pageSize = 40, string page = "1")
         {
-            /* id=pageSize voorraad=total_pages categorieID=page
+            /* id=pageSize voorraad=total_pages categorieID=page(huidige pagina index dus)
             vieze hack*/
             product filler = new product(); 
             List<product> productlist = _context.product.ToList();
             int page1;
             /* check om te kijken of page een nummer is want frontend geeft
             undefined door op pag1 wat een typeerror veroorzaak*/
-           
             page1 = (int.TryParse(page.ToString (), out int Num)) ? page1 = int.Parse(page) : page1 = 1;       
             filler.ID = (pageSize > productlist.Count()) ? productlist.Count() : pageSize;
             filler.voorraad = Convert.ToInt32(Math.Ceiling((productlist.Count()/Convert.ToDouble(pageSize))));
@@ -45,13 +44,10 @@ namespace product_Controller
             }
             else
             {
-                productlist = productlist.GetRange(offset, pageSize);
-                productlist.Insert(productlist.Count(),filler);
-                return productlist;
+                productlist.Insert(offset+pageSize,filler);
+                return productlist.GetRange(offset, pageSize+1);
             }
-
         }
-
 
         // GET api/product/5
         [HttpGet("{id}")]
@@ -60,13 +56,6 @@ namespace product_Controller
 
             return _context.product.Find(id);
         }
-        
-        // [HttpGet("{id}")]
-        // public product Get(int id)
-        // {
-
-        //     return _context.product.Find(id);
-        // }
 
         // POST api/product
         [HttpPost]
@@ -107,7 +96,8 @@ namespace product_Controller
                 }
                 
 
-
+                  //  .__(.)< (MEOW)
+                  //   \___)   
                 
                 
                 
