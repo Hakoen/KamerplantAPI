@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using product_model;
 
+
 namespace product_Controller
 {
  [Route("api/[controller]")]
@@ -19,19 +20,53 @@ namespace product_Controller
         }
 
         // GET api/product
-        [HttpGet]
-        public List<product> Get()
+        [HttpGet]    //default values needed to prevent crash
+        public List<product> Get(int pageSize = 40, string page = "1")
         {
-            return _context.product.ToList();
-            
+            /* id=pageSize voorraad=total_pages categorieID=page
+            vieze hack*/
+            product filler = new product(); 
+            List<product> productlist = _context.product.ToList();
+            int page1;
+            /* check om te kijken of page een nummer is want frontend geeft
+            undefined door op pag1 wat een typeerror veroorzaak*/
+           
+            page1 = (int.TryParse(page.ToString (), out int Num)) ? page1 = int.Parse(page) : page1 = 1;       
+            filler.ID = (pageSize > productlist.Count()) ? productlist.Count() : pageSize;
+            filler.voorraad = Convert.ToInt32(Math.Ceiling((productlist.Count()/Convert.ToDouble(pageSize))));
+            filler.categorieID = page1;
+            int offset = (page1 - 1) * pageSize;
+
+            //outofbounds check
+            if ((offset+pageSize)>productlist.Count())
+            {
+                productlist.Insert(productlist.Count(),filler);
+                return productlist.GetRange(offset, productlist.Count()-offset);
+            }
+            else
+            {
+                productlist = productlist.GetRange(offset, pageSize);
+                productlist.Insert(productlist.Count(),filler);
+                return productlist;
+            }
+
         }
+
 
         // GET api/product/5
         [HttpGet("{id}")]
         public product Get(int id)
         {
+
             return _context.product.Find(id);
         }
+        
+        // [HttpGet("{id}")]
+        // public product Get(int id)
+        // {
+
+        //     return _context.product.Find(id);
+        // }
 
         // POST api/product
         [HttpPost]
