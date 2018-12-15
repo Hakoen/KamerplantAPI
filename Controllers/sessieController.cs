@@ -49,7 +49,7 @@ namespace sessie_Controllers
         }
 
         [HttpPost]
-        public int Post([FromBody] inlogObject login)
+        public sessie Post([FromBody] inlogObject login)
         {
             closeSessions(login);
             //Gebruiker identificeren
@@ -66,17 +66,25 @@ namespace sessie_Controllers
 
                     _context.sessie.Add(newSessie);
                     _context.SaveChanges();
-                    return newSessie.ID;
+                    return newSessie;
                 }
                 catch
                 {
-                    return 0;
+                    sessie faalSessie = new sessie();
+                    faalSessie.geregistreerdeklantID = 0;
+                    faalSessie.intijd = DateTime.Now.ToString();
+                    faalSessie.actief = false;
+                    return faalSessie;
                 }
 
             }
             else
             {
-                return 0;
+                sessie faalSessie = new sessie();
+                faalSessie.geregistreerdeklantID = 0;
+                faalSessie.intijd = DateTime.Now.ToString();
+                faalSessie.actief = false;
+                return faalSessie;
             }     
         }
 
