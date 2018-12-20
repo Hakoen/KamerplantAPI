@@ -32,11 +32,37 @@ namespace bestelling_Controllers
             return _context.bestelling.ToList();
         }
 
+    	public class RequestOrder
+        {
+            public int klantID { get; set; }
+            public product[] producten { get; set; } //Product ID's
+            public bool geregistreerd { get; set; }
+            public string adres { get; set; }
+            public double prijs {get; set; }
+        }
         // GET api/bestelling/5
         [HttpGet("{id}")]
-        public bestelling Get(int id)
+        public RequestOrder Get(int id)
         {
-                return _context.bestelling.Find(id);
+            bestelling Bestelling = _context.bestelling.Find(id);
+            int[] productenInBestelling = (from combi in _context.bestellingproduct
+                    where (combi.bestellingID == id)
+                    select combi.productID).ToArray();
+            product[] producten = new product[productenInBestelling.Length];
+
+            for(int i = 0; i < productenInBestelling.Length; i++){
+                product HuidigProduct = _context.product.Find(productenInBestelling[i]);
+                producten.Append(HuidigProduct);
+            }
+
+            RequestOrder requestOrder = new RequestOrder();
+            requestOrder.adres = Bestelling.adres;
+            requestOrder.geregistreerd = Bestelling.geregistreerd;
+            requestOrder.klantID = Bestelling.klantID;
+            requestOrder.producten = producten;
+            requestOrder.prijs = Bestelling.prijs;
+
+            return requestOrder;
         }
 
         //Definitie van te ontvangen order object
