@@ -18,15 +18,22 @@ namespace product_Controller
         {
             _context = context;
         }
+        
 
         // GET api/product
         [HttpGet]    //default values needed to prevent crash
         public List<product> Get(int pageSize = 40, string page = "1")
         {
+            // 1	Bloembollen
+            // 2	Fruitbomen
+            // 3	Kamerplanten
+            // 4	Rozen
+            // 5	Zaden
             /* id=pageSize voorraad=total_pages categorieID=page(huidige pagina index dus)
             vieze hack*/
             product filler = new product(); 
-            List<product> productlist = _context.product.ToList();
+            List<product> unsortedlist = _context.product.ToList();
+            List<product> productlist = unsortedlist.OrderBy(o=>o.ID).ToList();
             int page1;
             /* check om te kijken of page een nummer is want frontend geeft
             undefined door op pag1 wat een typeerror veroorzaak*/

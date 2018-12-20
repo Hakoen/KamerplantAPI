@@ -11657,23 +11657,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jordy\\.nuget\\packages\\": {},
+    "C:\\Users\\ibrahim\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\kamerplanten-api.csproj",
+      "projectUniqueName": "C:\\Users\\ibrahim\\Documents\\GitHub\\kamerplanten-inc.-webshop-V2\\KamerplantAPI\\kamerplanten-api.csproj",
       "projectName": "kamerplanten-api",
-      "projectPath": "C:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\kamerplanten-api.csproj",
-      "packagesPath": "C:\\Users\\Jordy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jordy\\Documents\\GitHub\\KamerplantAPI\\obj\\",
+      "projectPath": "C:\\Users\\ibrahim\\Documents\\GitHub\\kamerplanten-inc.-webshop-V2\\KamerplantAPI\\kamerplanten-api.csproj",
+      "packagesPath": "C:\\Users\\ibrahim\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ibrahim\\Documents\\GitHub\\kamerplanten-inc.-webshop-V2\\KamerplantAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Jordy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ibrahim\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
