@@ -28,20 +28,33 @@ namespace verlanglijstitem_Controller
         // GET api/verlanglijstitem/5
         //ID is hier klant ID, waaraan de lijst items gelinkt zijn
         [HttpGet("{id}")]
-        public verlanglijstitem Get(int id)
+        public verlanglijstitem[] Get(int id)
         {
-            return _context.verlanglijstitem.Find(id);
+            verlanglijstitem[] inVerlanglijst = (from item in _context.verlanglijstitem
+                                    where (item.geregistreerdeklantID == id)
+                                    select item).ToArray();
+            return inVerlanglijst;
         }
 
         // POST api/verlanglijstitem
         [HttpPost]
         public StatusCodeResult Post([FromBody] verlanglijstitem newVerlanglijstitem)
         {
+            int gebruikerID = newVerlanglijstitem.geregistreerdeklantID;
+            int[] inVerlanglijst = (from item in _context.verlanglijstitem
+                                    where (item.geregistreerdeklantID == gebruikerID)
+                                    select item.productID).ToArray();
+
             try
-            {
-                _context.verlanglijstitem.Add(newVerlanglijstitem);
-                _context.SaveChanges();
-                return Ok();
+            { 
+                //Als gebruiker dit item nog niet op verlanglijst heeft:
+                if(inVerlanglijst.Contains(newVerlanglijstitem.productID)){
+                    return Ok();
+                } else {
+                    _context.verlanglijstitem.Add(newVerlanglijstitem);
+                    _context.SaveChanges();
+                    return Ok();
+                }
             }
             catch
             {
