@@ -26,3 +26,17 @@ E:\Github\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.AssemblyInfo.cs
 E:\Github\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.RazorTargetAssemblyInfo.cache
 E:\Github\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.dll
 E:\Github\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.pdb
+C:\Users\ibrahim\Documents\GitHub\kamerplanten-inc.-webshop-V2\KamerplantAPI\bin\Debug\netcoreapp2.1\kamerplanten-api.deps.json
+C:\Users\ibrahim\Documents\GitHub\kamerplanten-inc.-webshop-V2\KamerplantAPI\bin\Debug\netcoreapp2.1\kamerplanten-api.runtimeconfig.json
+C:\Users\ibrahim\Documents\GitHub\kamerplanten-inc.-webshop-V2\KamerplantAPI\bin\Debug\netcoreapp2.1\kamerplanten-api.runtimeconfig.dev.json
+C:\Users\ibrahim\Documents\GitHub\kamerplanten-inc.-webshop-V2\KamerplantAPI\bin\Debug\netcoreapp2.1\kamerplanten-api.dll
+C:\Users\ibrahim\Documents\GitHub\kamerplanten-inc.-webshop-V2\KamerplantAPI\bin\Debug\netcoreapp2.1\kamerplanten-api.pdb
+C:\Users\ibrahim\Documents\GitHub\kamerplanten-inc.-webshop-V2\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.csprojAssemblyReference.cache
+C:\Users\ibrahim\Documents\GitHub\kamerplanten-inc.-webshop-V2\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.csproj.CoreCompileInputs.cache
+C:\Users\ibrahim\Documents\GitHub\kamerplanten-inc.-webshop-V2\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.RazorAssemblyInfo.cache
+C:\Users\ibrahim\Documents\GitHub\kamerplanten-inc.-webshop-V2\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.RazorAssemblyInfo.cs
+C:\Users\ibrahim\Documents\GitHub\kamerplanten-inc.-webshop-V2\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.AssemblyInfoInputs.cache
+C:\Users\ibrahim\Documents\GitHub\kamerplanten-inc.-webshop-V2\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.AssemblyInfo.cs
+C:\Users\ibrahim\Documents\GitHub\kamerplanten-inc.-webshop-V2\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.RazorTargetAssemblyInfo.cache
+C:\Users\ibrahim\Documents\GitHub\kamerplanten-inc.-webshop-V2\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.dll
+C:\Users\ibrahim\Documents\GitHub\kamerplanten-inc.-webshop-V2\KamerplantAPI\obj\Debug\netcoreapp2.1\kamerplanten-api.pdb
