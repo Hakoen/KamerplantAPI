@@ -22,7 +22,7 @@ namespace product_Controller
 
         // GET api/product
         [HttpGet]    //default values needed to prevent crash
-        public List<product> Get(int pageSize = 40, string page = "1")
+        public List<product> Get(int pageSize = 40, string page = "1", string query = "")
         {
             // 1	Bloembollen
             // 2	Fruitbomen
@@ -34,6 +34,13 @@ namespace product_Controller
             product filler = new product(); 
             List<product> unsortedlist = _context.product.ToList();
             List<product> productlist = unsortedlist.OrderBy(o=>o.ID).ToList();
+
+            if ( query.Length > 0){
+                productlist = productlist.Where( x => x.naam.ToLower().Contains(query.ToLower())).ToList();
+            }
+
+
+
             int page1;
             /* check om te kijken of page een nummer is want frontend geeft
             undefined door op pag1 wat een typeerror veroorzaak*/
