@@ -44,24 +44,28 @@ namespace bestelling_Controllers
         [HttpGet("{id}")]
         public RequestOrder Get(int id)
         {
+            RequestOrder requestOrder = new RequestOrder();
+
             bestelling Bestelling = _context.bestelling.Find(id);
+
             int[] productenInBestelling = (from combi in _context.bestellingproduct
                     where (combi.bestellingID == id)
                     select combi.productID).ToArray();
+
             product[] producten = new product[productenInBestelling.Length];
 
             for(int i = 0; i < productenInBestelling.Length; i++){
                 product HuidigProduct = _context.product.Find(productenInBestelling[i]);
-                producten.Append(HuidigProduct);
+                Console.WriteLine("Gevonden product: " + HuidigProduct.naam);
+                producten[i] = HuidigProduct;
             }
 
-            RequestOrder requestOrder = new RequestOrder();
+            
             requestOrder.adres = Bestelling.adres;
             requestOrder.geregistreerd = Bestelling.geregistreerd;
             requestOrder.klantID = Bestelling.klantID;
             requestOrder.producten = producten;
             requestOrder.prijs = Bestelling.prijs;
-
             return requestOrder;
         }
 

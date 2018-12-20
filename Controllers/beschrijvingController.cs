@@ -44,13 +44,13 @@ namespace beschrijving_Controller
                             producten[i].beschrijving = "Sommigen geven hun ouders een oudejaarslot cadeau, maar wat moeten ze daarmee als je ook een " + producten[i].naam + " kan krijgen. En alleen bij kamerplant.me he! KOOP DAN, voor slechts: €" + producten[i].prijs;
                             break;
                         case (4):
-                            Console.WriteLine('4');
+                            producten[i].beschrijving = "De elegante " + producten[i].naam + "is de plant die u in huis dient te hebben. Deze zal niet alleen met Kerst een pronkstuk op uw tafel zijn, maar het hele jaar door. Nu voor slechts €" + producten[i].prijs.ToString() + "!";
                             break;
                         case (5):
-                            Console.WriteLine('5');
+                            producten[i].beschrijving = producten[i].naam + " is een oud belangrijk soort met een heerlijke geur die uw woonkamer laat bloeien. Ook kunnen ze heel goed bewaard worden waardoor ze lang mee gaan. Bestel nu voor slechts €" + producten[i].prijs.ToString() + "!";
                             break;
                         case (6):
-                            Console.WriteLine('6');
+                            producten[i].beschrijving = "Neem het zonnetje in huis met de enige echte " + producten[i].naam + " Het is een sterk soort die die al jaren meegaat. " + producten[i].naam + " is bij velen favoriet en terecht. Bestel nu het nog kan voor maar € " + producten[i].prijs.ToString() + "!";
                             break;
                         case (7):
                             Console.WriteLine('7');
