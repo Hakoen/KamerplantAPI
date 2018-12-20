@@ -22,7 +22,7 @@ namespace product_Controller
 
         // GET api/product
         [HttpGet]    //default values needed to prevent crash
-        public List<product> Get(int pageSize = 40, string page = "1", string query = "")
+        public List<product> Get(int pageSize = 40, string page = "1", string query = "", int cid = 0)
         {
             // 1	Bloembollen
             // 2	Fruitbomen
@@ -35,7 +35,14 @@ namespace product_Controller
             List<product> unsortedlist = _context.product.ToList();
             List<product> productlist = unsortedlist.OrderBy(o=>o.ID).ToList();
 
-            if ( query.Length > 0){
+            if ( cid > 0)
+            {
+                productlist = productlist.Where( x => x.categorieID == cid).ToList();
+            }
+
+
+            if ( query.Length > 0)
+            {
                 productlist = productlist.Where( x => x.naam.ToLower().Contains(query.ToLower())).ToList();
             }
 
