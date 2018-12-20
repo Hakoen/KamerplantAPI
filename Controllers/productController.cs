@@ -24,6 +24,11 @@ namespace product_Controller
         [HttpGet]    //default values needed to prevent crash
         public List<product> Get(int pageSize = 40, string page = "1")
         {
+            // 1	Bloembollen
+            // 2	Fruitbomen
+            // 3	Kamerplanten
+            // 4	Rozen
+            // 5	Zaden
             /* id=pageSize voorraad=total_pages categorieID=page(huidige pagina index dus)
             vieze hack*/
             product filler = new product(); 
