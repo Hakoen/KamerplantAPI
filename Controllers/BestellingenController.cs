@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using bestelling_model;
+using klant_model;
+using bestellingproduct_model;
+using product_model;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace bestellingen_Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class bestellingenController : ControllerBase
+    {
+
+        private readonly kamerplantContext _context;
+
+        public bestellingenController(kamerplantContext context)
+        {
+            _context = context;
+        }
+
+
+        // GET api/bestelling/5 KLANT ID RETURNT ALLE BESTELLING ID's
+        [HttpGet("{id}")]
+        public int[] Get(int id)
+        {
+            Console.WriteLine("Joe");
+            int[] klantBestellingen = (from bestelling in _context.bestelling
+                    where (bestelling.geregistreerd == true && bestelling.klantID == id)
+                    select bestelling.ID).ToArray();
+            
+            return klantBestellingen;
+        }
+
+        
+    }
+}

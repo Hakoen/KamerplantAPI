@@ -84,6 +84,7 @@ namespace bestelling_Controllers
         {
             //Boolean to determine if order can be placed
             bool allProductsInStock = true;
+            Console.WriteLine(order.klantID);
 
             //Bestelling
             bestelling newBestelling = new bestelling();
