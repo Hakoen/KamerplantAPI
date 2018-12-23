@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using bestellingproduct_model;
 using verlanglijstitem_model;
-using productmandje_model;
 
 namespace product_model
 {
@@ -17,6 +16,5 @@ namespace product_model
         public int categorieID { get; set; }
         public List<bestellingproduct> bestellingen { get; set; }
         public List<verlanglijstitem> verlanglijst { get; set; }
-        public List<productmandje> mandjes { get; set; }
     }
 }

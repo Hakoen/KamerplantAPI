@@ -29,7 +29,6 @@ namespace bestellingen_Controllers
         [HttpGet("{id}")]
         public int[] Get(int id)
         {
-            Console.WriteLine("Joe");
             int[] klantBestellingen = (from bestelling in _context.bestelling
                     where (bestelling.geregistreerd == true && bestelling.klantID == id)
                     select bestelling.ID).ToArray();

@@ -7,6 +7,7 @@ namespace bestellingproduct_model
 {
     public class bestellingproduct
     {
+        public int ID {get; set; }
         public int productID { get; set; }
         public product product { get; set; }
         public int bestellingID { get; set; }
