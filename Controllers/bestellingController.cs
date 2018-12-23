@@ -88,7 +88,7 @@ namespace bestelling_Controllers
             //Bestelling
             bestelling newBestelling = new bestelling();
             newBestelling.datum = DateTime.Now.ToString();
-            newBestelling.prijs = 0.00;
+            newBestelling.prijs = 4.95;
             newBestelling.klantID = order.klantID;
             newBestelling.adres = order.adres;
             newBestelling.geregistreerd = order.geregistreerd;
