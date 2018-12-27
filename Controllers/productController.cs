@@ -46,6 +46,8 @@ namespace product_Controller
                 productlist = productlist.Where( x => x.naam.ToLower().Contains(query.ToLower())).ToList();
             }
 
+            
+
 
 
             int page1;
@@ -70,18 +72,39 @@ namespace product_Controller
             }
         }
 
+     
+
+
+        
         // GET api/product/5
         [HttpGet("{id}")]
         public product Get(int id)
         {
-
+            
             return _context.product.Find(id);
+        }
+
+           public class requestproduct
+        {
+            public string naam { get; set;}
+            public string foto { get; set; }            
+            public int voorraad { get; set; }
+            public double prijs {get; set; }
+            public int categorieID { get; set; }
         }
 
         // POST api/product
         [HttpPost]
-        public StatusCodeResult Post([FromBody] product newProduct)
+        public StatusCodeResult Post([FromBody] requestproduct requestproduct)
         {
+            
+            product newProduct = new product();
+            newProduct.naam = requestproduct.naam;
+            newProduct.foto = requestproduct.foto;
+            newProduct.voorraad = requestproduct.voorraad;
+            newProduct.prijs = requestproduct.prijs;
+            newProduct.categorieID = requestproduct.categorieID;
+
             try
             {
                 _context.product.Add(newProduct);
@@ -98,8 +121,15 @@ namespace product_Controller
 
         // PUT api/product/5
         [HttpPut]
-        public StatusCodeResult Put()
+        public StatusCodeResult Put([FromBody] requestproduct requestproduct)
         {
+            product newProduct = new product();
+            newProduct.naam = requestproduct.naam;
+            newProduct.foto = requestproduct.foto;
+            newProduct.voorraad = requestproduct.voorraad;
+            newProduct.prijs = requestproduct.prijs;
+            newProduct.categorieID = requestproduct.categorieID;
+            
             try
             {
             
