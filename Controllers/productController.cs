@@ -4,6 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using product_model;
+using bestellingproduct_model;
+using verlanglijstitem_model;
+
+
+
+
 
 
 namespace product_Controller
@@ -86,11 +92,16 @@ namespace product_Controller
 
            public class requestproduct
         {
+            public int ID { get; set; }
             public string naam { get; set;}
             public string foto { get; set; }            
             public int voorraad { get; set; }
             public double prijs {get; set; }
             public int categorieID { get; set; }
+            public string beschrijving { get; set; }
+            public List<bestellingproduct> bestellingen { get; set; }
+            public List<verlanglijstitem> verlanglijst { get; set; }
+            
         }
 
         // POST api/product
@@ -99,11 +110,17 @@ namespace product_Controller
         {
             
             product newProduct = new product();
+            newProduct.ID = requestproduct.ID;
             newProduct.naam = requestproduct.naam;
             newProduct.foto = requestproduct.foto;
             newProduct.voorraad = requestproduct.voorraad;
             newProduct.prijs = requestproduct.prijs;
             newProduct.categorieID = requestproduct.categorieID;
+            newProduct.beschrijving = requestproduct.beschrijving;
+            newProduct.bestellingen = requestproduct.bestellingen;
+            newProduct.verlanglijst = requestproduct.verlanglijst;
+            
+
 
             try
             {
@@ -119,19 +136,23 @@ namespace product_Controller
 
 //[FromBody] product changedProduct
 
+        
         // PUT api/product/5
         [HttpPut]
-        public StatusCodeResult Put([FromBody] requestproduct requestproduct)
+        public product Put([FromBody] requestproduct requestproduct)
         {
             product newProduct = new product();
+            newProduct.ID = requestproduct.ID;
             newProduct.naam = requestproduct.naam;
             newProduct.foto = requestproduct.foto;
             newProduct.voorraad = requestproduct.voorraad;
             newProduct.prijs = requestproduct.prijs;
             newProduct.categorieID = requestproduct.categorieID;
+            newProduct.beschrijving = requestproduct.beschrijving;
+        
             
-            try
-            {
+            // try
+            // {
             
                 product[] producten = _context.product.ToArray();
                 Random rnd = new Random();
@@ -142,7 +163,7 @@ namespace product_Controller
                     
                         producten[i].voorraad = 
                         producten[i].voorraad + rnd.Next(1000, 9000); 
-                         
+
 
                 }
                 
@@ -152,20 +173,22 @@ namespace product_Controller
                 
                 
                 
-                //_context.product.Update(changedProduct);
+                _context.product.Update(newProduct);
                 _context.SaveChanges();
-                return Ok();
+                return newProduct;
             }
-            catch
-            {
-                return BadRequest();
-            }
-        }
+            // catch
+            // {
+            //     return BadRequest();
+            // }
+        // }
+
 
         // DELETE api/product/5
         [HttpDelete("{id}")]
         public StatusCodeResult Delete(int id)
         {
+            
             try
             {
                 product verwijder = _context.product.Find(id);
