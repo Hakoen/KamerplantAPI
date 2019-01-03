@@ -139,7 +139,7 @@ namespace product_Controller
         
         // PUT api/product/5
         [HttpPut]
-        public product Put([FromBody] product requestproduct)
+        public StatusCodeResult Put([FromBody] product requestproduct)
         {
             product newProduct = new product();
             newProduct.ID = requestproduct.ID;
@@ -153,8 +153,8 @@ namespace product_Controller
 
         
             
-            // try
-            // {
+            try
+            {
             
                 // product[] producten = _context.product.ToArray();
                 // Random rnd = new Random();
@@ -177,13 +177,13 @@ namespace product_Controller
                 
                 _context.product.Update(newProduct);
                 _context.SaveChanges();
-                return newProduct;
+                return Ok();
             }
-            // catch
-            // {
-            //     return BadRequest();
-            // }
-        // }
+            catch
+            {
+                return BadRequest();
+            }
+        }
 
 
         // DELETE api/product/5
