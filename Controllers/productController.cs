@@ -139,7 +139,7 @@ namespace product_Controller
         
         // PUT api/product/5
         [HttpPut]
-        public product Put([FromBody] requestproduct requestproduct)
+        public product Put([FromBody] product requestproduct)
         {
             product newProduct = new product();
             newProduct.ID = requestproduct.ID;
@@ -149,23 +149,25 @@ namespace product_Controller
             newProduct.prijs = requestproduct.prijs;
             newProduct.categorieID = requestproduct.categorieID;
             newProduct.beschrijving = requestproduct.beschrijving;
+           
+
         
             
             // try
             // {
             
-                product[] producten = _context.product.ToArray();
-                Random rnd = new Random();
+                // product[] producten = _context.product.ToArray();
+                // Random rnd = new Random();
 
-                for (int i = 0; i != (producten.Length); i++ )
-                {
-                    if (producten[i].voorraad == 0 )
+                // for (int i = 0; i != (producten.Length); i++ )
+                // {
+                //     if (producten[i].voorraad == 0 )
                     
-                        producten[i].voorraad = 
-                        producten[i].voorraad + rnd.Next(1000, 9000); 
+                //         producten[i].voorraad = 
+                //         producten[i].voorraad + rnd.Next(1000, 9000); 
 
 
-                }
+                // }
                 
 
                   //  .__(.)< (MEOW)
