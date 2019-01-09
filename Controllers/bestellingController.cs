@@ -24,15 +24,7 @@ namespace bestelling_Controllers
             _context = context;
         }
 
-
-        // GET api/admin
-        [HttpGet]
-        public List<bestelling> Get()
-        {
-            return _context.bestelling.ToList();
-        }
-
-    	public class RequestOrder
+        public class RequestOrder
         {
             public int klantID { get; set; }
             public product[] producten { get; set; } //Product ID's
@@ -40,6 +32,46 @@ namespace bestelling_Controllers
             public string adres { get; set; }
             public double prijs {get; set; }
         }
+
+        // GET api/admin
+        [HttpGet]
+        public RequestOrder[] Get()
+        {
+            
+            bestelling[] bestellingen = _context.bestelling.ToArray();
+            RequestOrder[] alleBestellingen = new RequestOrder[bestellingen.Length];
+
+            for(int i = 0; i < bestellingen.Length; i++)
+            {
+                int[] productenInBestelling = (from combi in _context.bestellingproduct
+                    where (combi.bestellingID == bestellingen[i].ID)
+                    select combi.productID).ToArray();
+
+                RequestOrder requestOrder = new RequestOrder();
+                product[] producten = new product[productenInBestelling.Length];
+
+                
+
+                for(int x = 0; x < productenInBestelling.Length; x++){
+                    product HuidigProduct = _context.product.Find(productenInBestelling[x]);
+                    producten[x] = HuidigProduct;
+                }
+
+                requestOrder.adres = bestellingen[i].adres;
+                requestOrder.geregistreerd = bestellingen[i].geregistreerd;
+                requestOrder.klantID = bestellingen[i].klantID;
+                requestOrder.producten = producten;
+                requestOrder.prijs = bestellingen[i].prijs;
+                alleBestellingen[i] = requestOrder;
+
+            }
+
+            return alleBestellingen;
+
+
+        }
+
+    	
         // GET api/bestelling/5
         [HttpGet("{id}")]
         public RequestOrder Get(int id)

@@ -13,6 +13,7 @@ namespace bestelling_model
         public string datum { get; set; }
         public string adres { get; set; }
         public List<bestellingproduct> producten { get; set; }
+        public string status { get; set; }
         
     }
 }
