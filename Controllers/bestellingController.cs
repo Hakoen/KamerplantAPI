@@ -31,6 +31,7 @@ namespace bestelling_Controllers
             public bool geregistreerd { get; set; }
             public string adres { get; set; }
             public double prijs {get; set; }
+            public string status { get; set; }
         }
 
         // GET api/admin
@@ -62,6 +63,7 @@ namespace bestelling_Controllers
                 requestOrder.klantID = bestellingen[i].klantID;
                 requestOrder.producten = producten;
                 requestOrder.prijs = bestellingen[i].prijs;
+                requestOrder.status = bestellingen[i].status;
                 alleBestellingen[i] = requestOrder;
 
             }
@@ -98,6 +100,7 @@ namespace bestelling_Controllers
             requestOrder.klantID = Bestelling.klantID;
             requestOrder.producten = producten;
             requestOrder.prijs = Bestelling.prijs;
+            requestOrder.status = Bestelling.status;
             return requestOrder;
         }
 
@@ -124,6 +127,7 @@ namespace bestelling_Controllers
             newBestelling.klantID = order.klantID;
             newBestelling.adres = order.adres;
             newBestelling.geregistreerd = order.geregistreerd;
+            newBestelling.status = "Onbehandeld";
 
             //Bestelling opbouwen uit aangeleverde json
             //Bestellingproduct krijgen wij binnen als array product ID's

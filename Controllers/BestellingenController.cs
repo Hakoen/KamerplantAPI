@@ -36,6 +36,22 @@ namespace bestellingen_Controllers
             return klantBestellingen;
         }
 
+        public class bestellingUpdate {
+            public int bestellingID { get; set; }
+            public string newStatus { get; set; }
+        }
+
+        [HttpPut("{id}")]
+        public bestelling Get([FromBody] bestellingUpdate bestellingupdate)
+        {
+            bestelling Bestelling = _context.bestelling.Find(bestellingupdate.bestellingID);
+            Bestelling.status = bestellingupdate.newStatus;
+
+            _context.bestelling.Add(Bestelling);
+            _context.SaveChanges();
+            return Bestelling;
+        }
+
         
     }
 }
