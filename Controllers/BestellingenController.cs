@@ -42,12 +42,21 @@ namespace bestellingen_Controllers
         }
 
         [HttpPut("{id}")]
-        public bestelling Get([FromBody] bestellingUpdate bestellingupdate)
+        public bestelling Put([FromBody] bestellingUpdate bestellingupdate)
         {
             bestelling Bestelling = _context.bestelling.Find(bestellingupdate.bestellingID);
             Bestelling.status = bestellingupdate.newStatus;
 
             _context.bestelling.Add(Bestelling);
+            _context.SaveChanges();
+            return Bestelling;
+        }
+
+        [HttpDelete("{id}")]
+        public bestelling Delete(int id)
+        {
+            bestelling Bestelling = _context.bestelling.Find(id);
+            _context.bestelling.Remove(Bestelling);
             _context.SaveChanges();
             return Bestelling;
         }

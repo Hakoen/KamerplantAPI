@@ -53,19 +53,19 @@ namespace beschrijving_Controller
                             producten[i].beschrijving = "Neem het zonnetje in huis met de enige echte " + producten[i].naam + " Het is een sterk soort die die al jaren meegaat. " + producten[i].naam + " is bij velen favoriet en terecht. Bestel nu het nog kan voor maar € " + producten[i].prijs.ToString() + "!";
                             break;
                         case (7):
-                            Console.WriteLine('7');
+                            producten[i].beschrijving = "Koop deze overheerlijke " + producten[i].naam + " nu exclusief bij kamerplant.me, voor slechts €" + producten[i].prijs.ToString() + "!";
                             break;
                         case (8):
-                            Console.WriteLine('8');
+                            producten[i].beschrijving = "Deze mooie " + producten[i].naam + " is alleen maar te koop bij kamerplant.me, koop h'm daarom snel voor maar €" + producten[i].prijs.ToString() + "!";
                             break;
                         case (9):
-                            Console.WriteLine('9');
+                            producten[i].beschrijving = "Voor slechts "  + producten[i].prijs.ToString() + " kunt u nu al deze mooie " + producten[i].naam + " in huis halen!";
                             break;
                         case (10):
-                            producten[i].beschrijving = "Deze " + producten[i].naam + " is de aller laatste die we uit China konden trekken, hierna sterft ie uit! Kopen nu het nog kan dus, zeker voor een prijsje van slechts: €" + producten[i].prijs + "!";
+                            producten[i].beschrijving = "Deze " + producten[i].naam + " is de aller laatste die we uit China konden trekken, hierna sterft ie uit! Kopen nu het nog kan dus, zeker voor een prijsje van slechts: €" + producten[i].prijs.ToString() + "!";
                             break;
                         default: //Komt eigenlijk niet voor, daarom dubbel met case 10:
-                            producten[i].beschrijving = "Deze " + producten[i].naam + " is de aller laatste die we uit China konden trekken, hierna sterft ie uit! Kopen nu het nog kan dus, zeker voor een prijsje van slechts: €" + producten[i].prijs + "!";
+                            producten[i].beschrijving = "Deze " + producten[i].naam + " is de aller laatste die we uit China konden trekken, hierna sterft ie uit! Kopen nu het nog kan dus, zeker voor een prijsje van slechts: €" + producten[i].prijs.ToString() + "!";
                             break; 
                     } 
                     _context.SaveChanges();     
