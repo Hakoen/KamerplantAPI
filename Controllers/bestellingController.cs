@@ -27,6 +27,7 @@ namespace bestelling_Controllers
         public class RequestOrder
         {
             public int klantID { get; set; }
+            public int bestellingID { get; set; }
             public product[] producten { get; set; } //Product ID's
             public bool geregistreerd { get; set; }
             public string adres { get; set; }
@@ -34,7 +35,7 @@ namespace bestelling_Controllers
             public string status { get; set; }
         }
 
-        // GET api/admin
+        // GET api/
         [HttpGet]
         public RequestOrder[] Get()
         {
@@ -59,6 +60,7 @@ namespace bestelling_Controllers
                 }
 
                 requestOrder.adres = bestellingen[i].adres;
+                requestOrder.bestellingID = bestellingen[i].ID;
                 requestOrder.geregistreerd = bestellingen[i].geregistreerd;
                 requestOrder.klantID = bestellingen[i].klantID;
                 requestOrder.producten = producten;
@@ -90,12 +92,12 @@ namespace bestelling_Controllers
 
             for(int i = 0; i < productenInBestelling.Length; i++){
                 product HuidigProduct = _context.product.Find(productenInBestelling[i]);
-                Console.WriteLine("Gevonden product: " + HuidigProduct.naam);
                 producten[i] = HuidigProduct;
             }
 
             
             requestOrder.adres = Bestelling.adres;
+            requestOrder.bestellingID = Bestelling.ID;
             requestOrder.geregistreerd = Bestelling.geregistreerd;
             requestOrder.klantID = Bestelling.klantID;
             requestOrder.producten = producten;
@@ -178,5 +180,8 @@ namespace bestelling_Controllers
             }
 
         }
+
+        
+
     }
 }
